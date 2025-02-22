@@ -25,9 +25,13 @@ public class GreetingController {
     }
     @Autowired
     GreetingService greetingService;
-    //Get Mapping
-    @GetMapping(value = "/hello",produces = "application/json")
-    public ResponseEntity<ObjectNode> sayHello(){
+    @GetMapping(value = {"/hello", "/hello/{Fname}", "/hello/{Fname}/{Lname}"}, produces = "application/json")
+    public ResponseEntity<ObjectNode> sayHello(
+            @PathVariable(value = "Fname", required = false) Optional<String> Fname,
+            @PathVariable(value = "Lname", required = false) Optional<String> Lname) {
+        ObjectNode objectNode = new ObjectMapper().createObjectNode();
+        Fname.ifPresent(value -> objectNode.put("Fname", value));
+        Lname.ifPresent(value -> objectNode.put("Lname", value));
         return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
     //Get All
