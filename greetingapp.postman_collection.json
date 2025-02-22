@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "9513d3d0-4327-4fac-b89f-4c6729dc7fd7",
+		"name": "greetingapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22945486"
+	},
+	"item": [
+		{
+			"name": "UC4",
+			"item": [
+				{
+					"name": "GetJSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/hello?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllJSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/helloAll",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"helloAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostHello",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"Saurabh\",\r\n    \"lname\": \"Saraswat\",\r\n    \"message\": \"This is DTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/hello",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutHello",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fname\":\"Saurabh\",\r\n    \"lname\": \"Saraswat\",\r\n    \"message\": \"This is DTO editted\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/hello",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteHello",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/hello",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragmentAbility for the Greeting App to save the Greeting Message in the RepositoryEndFragment"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8090",
+			"type": "string"
+		}
+	]
+}
