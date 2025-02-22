@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.service.GreetingService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -22,31 +23,34 @@ public class GreetingController {
         objectNode = objectMapper.createObjectNode();
         objectNode.put("name", "default_value");
     }
+    @Autowired
+    GreetingService greetingService;
     //Get Mapping
     @GetMapping(value = "/hello",produces = "application/json")
     public ResponseEntity<ObjectNode> sayHello(){
-        return ResponseEntity.ok(objectNode);
+        return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
     //Get All
     @GetMapping(value = "/helloAll",produces = "application/json")
     public ResponseEntity<ObjectNode> helloAll(){
-        return ResponseEntity.ok(objectNode);
+        return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
     //Post Mapping
     @PostMapping(value = "/hello", produces = "application/json")
     public ResponseEntity<ObjectNode> postHello(@RequestBody Map<String, String> newData) {
         objectNode.put("name", newData.get("name"));
-        return ResponseEntity.ok(objectNode);
+        return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
     //Put Mapping
     @PutMapping(value = "/hello",produces = "application/json")
     public ResponseEntity<ObjectNode> putHello(@RequestBody Map<String,String> newData){
         objectNode.put("name", newData.get("name"));
-        return ResponseEntity.ok(objectNode);
+        return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
     //Delete Mapping
     @DeleteMapping(value = "/hello",produces = "application/json")
     public ResponseEntity<ObjectNode> deleteHello(@RequestBody Map<String,String> newData){
-        return ResponseEntity.ok(new ObjectMapper().createObjectNode().put("name",newData.remove("name")));
+        objectNode.remove("name");
+        return ResponseEntity.ok(greetingService.myservice(objectNode));
     }
 }
