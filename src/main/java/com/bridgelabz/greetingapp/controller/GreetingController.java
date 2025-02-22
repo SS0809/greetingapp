@@ -15,8 +15,8 @@ public class GreetingController {
     GreetingService greetingService;
 
     @GetMapping(value = "/hello", produces = "application/json")
-    public ResponseEntity<ObjectNode> sayHello(@RequestBody GreetingDTO greetingDTO) {
-        return ResponseEntity.ok(greetingService.getmyservice(greetingDTO));
+    public ResponseEntity<ObjectNode> sayHello(@RequestParam Long id) {
+        return ResponseEntity.ok(greetingService.getmyservice(id));
     }
     //Get All
     @GetMapping(value = "/helloAll",produces = "application/json")

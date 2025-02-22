@@ -35,14 +35,13 @@ public class GreetingService {
         return "removed ID";
     }
 
-    public ObjectNode getmyservice(GreetingDTO greetingDTO) {
-        Greeting greeting = modelMapper.map(greetingDTO, Greeting.class);
-        Optional<Greeting> savedGreeting = greetingRepository.findById(greeting.getId());
+    public ObjectNode getmyservice(Long id) {
+        Optional<Greeting> savedGreeting = greetingRepository.findById(id);
         if (savedGreeting.isPresent()) {
             return createGreetingObjectNode(savedGreeting.get());
         } else {
             ObjectNode errorNode = objectMapper.createObjectNode();
-            errorNode.put("error", "Greeting not found for id: " + greeting.getId());
+            errorNode.put("error", "Greeting not found for id: " + id);
             return errorNode;
         }
     }
