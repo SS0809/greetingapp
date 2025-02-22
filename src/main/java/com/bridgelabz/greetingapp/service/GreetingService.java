@@ -47,12 +47,12 @@ public class GreetingService {
     }
 
     public ArrayNode getAllservice() {
-        List<Greeting> greetings = greetingRepository.findAll();
-        ArrayNode arrayNode = objectMapper.createArrayNode();
-        for (Greeting greeting : greetings) {
-            arrayNode.add(createGreetingObjectNode(greeting));
+        List<Greeting> greetingsFromRepo = greetingRepository.findAll();
+        ArrayNode arrayNodeForAllMSgs = objectMapper.createArrayNode();
+        for (Greeting greeting : greetingsFromRepo) {
+            arrayNodeForAllMSgs.add(createGreetingObjectNode(greeting));
         }
-        return arrayNode;
+        return arrayNodeForAllMSgs;
     }
 
     private ObjectNode createGreetingObjectNode(Greeting greeting) {
