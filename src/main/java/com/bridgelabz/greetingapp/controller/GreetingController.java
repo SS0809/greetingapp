@@ -31,7 +31,7 @@ public class GreetingController {
     //Put Mapping
     @PutMapping(value = "/hello",produces = "application/json")
     public ResponseEntity<ObjectNode> putHello(@RequestBody GreetingDTO newData) {
-        return ResponseEntity.ok(greetingService.setmyservice(newData));
+        return ResponseEntity.ok(greetingService.editmyservice(newData));
     }
     //Delete Mapping
     @DeleteMapping(value = "/hello",produces = "application/json")
