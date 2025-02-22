@@ -31,7 +31,11 @@ public class GreetingService {
 
     public String deletemyservice(GreetingDTO greetingDTO){
         Greeting greeting = modelMapper.map(greetingDTO, Greeting.class);
-        greetingRepository.deleteById(greeting.getId());//TODO it throws exception
+        try {
+            greetingRepository.deleteById(greeting.getId());
+        } catch (Exception e) {
+            return e.toString();
+        }
         return "removed ID";
     }
 
